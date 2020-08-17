@@ -7,8 +7,7 @@ on employees.emp_no=salaries.emp_no;
 --List first name, last name, and hire date for employees who were hired in 1986.
 select employees.first_name, employees.last_name, employees.hire_date
 from employees
-where employees.hire_date >= '1986-01-01'
-and employees.hire_date <= '1986-12-31';
+where employees.hire_date between '1986-01-01'and '1986-12-31';
 
 --List the manager of each department with the following information: department number, department name, the manager's employee number, last name, first name.
 select dept_manager.emp_no, 
@@ -68,10 +67,10 @@ where departments.dept_name = 'Sales'
 or departments.dept_name = 'Development';
 
 --In descending order, list the frequency count of employee last names, i.e., how many employees share each last name.
-select employees.last_name, count(employees.last_name)
+select employees.last_name, count(employees.last_name) as name_count
 from employees
 group by employees.last_name
-order by count(employees.last_name) desc;
+order by name_count desc;
 
 
 
